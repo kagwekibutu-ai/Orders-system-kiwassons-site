@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order - kiwassons Auto Hardware</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">kiwassons <span>Construction</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Feedback</a>
+      <a href="../admin/login.html">CEO Login</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="notify-btn" id="notify-btn" title="Notifications">𔔨 <span id="notify-badge" class="notify-badge">0</span></button>
+      <span id="user-greeting" class="user-greeting"></span>
+      <button onclick="openAuth()" id="auth-btn">Register</button>
+    </div>
+  </header>
+
+  <div class="service-flow">
+    <a href="#" class="service-step" onclick="openAuth(); return false;">
+      <span class="step-num">1</span><span><strong>Register</strong><small>Create your client profile</small></span>
+    </a>
+    <a href="products.html" class="service-step active">
+      <span class="step-num">2</span><span><strong>Order</strong><small>Type your order list &amp; submit</small></span>
+    </a>
+    <a href="invoice.html" class="service-step">
+      <span class="step-num">3</span><span><strong>Invoice &amp; Notifications</strong><small>Verify goods &amp; get notified</small></span>
+    </a>
+    <a href="../admin/login.html" class="service-step">
+      <span class="step-num">4</span><span><strong>CEO Records</strong><small>Invoices, payments &amp; timeline</small></span>
+    </a>
+  </div>
+
+  <section class="page-header">
+    <h1>Place Your Order</h1>
+    <p class="text-muted" style="text-align:center;">Type the construction materials, tools, or plumbing supplies you need as a simple list. Include item name and quantity for each line.</p>
+  </section>
+
+  <section class="order-form-section">
+    <div class="order-form">
+      <div class="form-group">
+        <label>Your Order List (one item per line)</label>
+        <textarea id="order-list" rows="10" placeholder="Example:
+Cement 50kg - 10 bags
+PVC Pipe 4 inch - 5 pieces
+Plumbing wrench - 2 pieces
+Tiles 60x60 - 30 boxes" required></textarea>
+        <p class="text-muted">Type each item on its own line. You can include the quantity next to the item name.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Delivery Option</label>
+        <div class="delivery-options">
+          <label class="delivery-option">
+            <input type="radio" name="delivery_method" value="pickup" checked>
+            Pickup at store (<a href="https://maps.app.goo.gl/f6xpbP5TN2tVqDuK6" target="_blank" rel="noopener">Murang'a</a>)
+          </label>
+          <label class="delivery-option">
+            <input type="radio" name="delivery_method" value="delivery">
+            kiwassons delivery to my address (price to be negotiated with CEO)
+          </label>
+          <label class="delivery-option">
+            <input type="radio" name="delivery_method" value="self">
+            I will use my own means of transport
+          </label>
+        </div>
+      </div>
+
+      <div id="delivery-fields" style="margin-top:1rem; display:none;">
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <textarea id="delivery-address" placeholder="Estate, Street, House/Plot, Town"></textarea>
+        </div>
+      </div>
+
+      <div id="self-delivery-fields" style="margin-top:1rem; display:none;">
+        <div class="form-group">
+          <label>Your Transport Arrangement</label>
+          <textarea id="self-delivery-details" placeholder="e.g. My driver will collect with vehicle KDA 123X, or I will pick them up myself"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="order-name" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="order-email" required>
+      </div>
+      <div class="form-group">
+        <label>Phone / WhatsApp Number</label>
+        <input type="tel" id="order-phone" placeholder="+254721397468 / +254722230690" required>
+      </div>
+      <div class="form-group">
+        <label>Notes (optional)</label>
+        <textarea id="order-notes"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-full" id="place-order-btn">Submit Order</button>
+    </div>
+
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div id="order-preview" class="order-preview"></div>
+      <div class="summary-row" style="margin-top:1rem;">
+        <span>Delivery:</span>
+        <span id="preview-delivery">KES 0</span>
+      </div>
+      <div class="summary-row" style="margin-top:1rem; font-weight:bold; color:var(--royal-blue); border-top:1px solid #ddd; padding-top:1rem;">
+        <span>Total:</span>
+        <span id="preview-total">KES 0</span>
+      </div>
+      <p class="text-muted" style="font-size:0.85rem;">The CEO will confirm prices and send your invoice by email and WhatsApp.</p>
+    </div>
+  </section>
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAuth()">&times;</span>
+      <h3>Client Registration</h3>
+      <p class="text-muted">Register your details to place orders and receive notifications when your order is ready. Already registered? Enter the same email and password to continue.</p>
+      <form id="reg-form">
+        <input type="text" id="reg-name" placeholder="Full Name" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password" required>
+        <input type="text" id="reg-phone" placeholder="Phone" required>
+        <input type="text" id="reg-address" placeholder="Address (optional)">
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 kiwassons Auto Hardware. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/order.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice - kiwassons Auto Hardware</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/invoice.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">kiwassons <span>Construction</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="products.html">Place Order</a>
+      <a href="../admin/login.html">CEO Login</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="notify-btn" id="notify-btn" title="Notifications">𔔨 <span id="notify-badge" class="notify-badge">0</span></button>
+      <span id="user-greeting" class="user-greeting"></span>
+      <button onclick="openAuth()" id="auth-btn">Register</button>
+    </div>
+  </header>
+
+  <div class="service-flow">
+    <a href="#" class="service-step" onclick="openAuth(); return false;">
+      <span class="step-num">1</span><span><strong>Register</strong><small>Create your client profile</small></span>
+    </a>
+    <a href="products.html" class="service-step">
+      <span class="step-num">2</span><span><strong>Order</strong><small>Type your order list &amp; submit</small></span>
+    </a>
+    <a href="invoice.html" class="service-step active">
+      <span class="step-num">3</span><span><strong>Invoice &amp; Notifications</strong><small>Verify goods &amp; get notified</small></span>
+    </a>
+    <a href="../admin/login.html" class="service-step">
+      <span class="step-num">4</span><span><strong>CEO Records</strong><small>Invoices, payments &amp; timeline</small></span>
+    </a>
+  </div>
+
+  <main class="invoice-page">
+    <div class="invoice-actions">
+      <a href="index.html" class="btn btn-outline">&larr; Back to Shop</a>
+      <button id="inv-download" class="btn btn-primary">Download / Print Invoice</button>
+      <button id="inv-submit-email" class="btn btn-primary" style="background:#1f6b35;">Submit &amp; Email Invoice</button>
+    </div>
+
+    <div id="invoice-status-banner" class="invoice-status-banner" style="display:none;"></div>
+
+    <div id="invoice-message" class="invoice-message" style="display:none;"></div>
+
+    <article class="invoice-card" id="invoice-card">
+      <div class="invoice-accent"></div>
+
+      <header class="invoice-header">
+        <div class="invoice-brand">
+          <div class="logo">kiwassons <span>Auto Hardware</span></div>
+          <p><a href="https://maps.app.goo.gl/f6xpbP5TN2tVqDuK6" target="_blank" rel="noopener">Murang'a, Kenya</a><br>kiwashardwaressons@gmail.com<br>+254721397468 / +254722230690</p>
+        </div>
+        <div class="invoice-title-block">
+          <h1>INVOICE</h1>
+          <p id="inv-date">--</p>
+          <p class="invoice-no">Invoice No: <strong id="inv-number">--</strong></p>
+        </div>
+      </header>
+
+      <div class="invoice-meta">
+        <div class="bill-to">
+          <h4>TO:</h4>
+          <p id="inv-client-name">--</p>
+          <p id="inv-client-contact">--</p>
+          <input type="text" id="inv-client-address" placeholder="Delivery address" value="--">
+        </div>
+        <div class="order-meta">
+          <p><span>Order No:</span> <strong id="inv-order-number">--</strong></p>
+          <p><span>Order Date:</span> <strong id="inv-order-date">--</strong></p>
+          <p><span>Delivery Option:</span> <strong id="inv-delivery-method">--</strong></p>
+          <p><span>Order Status:</span> <strong id="inv-order-status">--</strong></p>
+        </div>
+      </div>
+
+      <div class="invoice-table-wrap">
+        <table class="invoice-table">
+          <thead><tr><th>QTY</th><th>DESCRIPTION</th><th>PRICE (KES)</th><th>TOTAL (KES)</th><th></th></tr></thead>
+          <tbody id="inv-items">
+            <tr><td colspan="5">Loading invoice...</td></tr>
+          </tbody>
+        </table>
+        <button type="button" class="btn add-item-btn" id="add-item-btn">+ Add Item</button>
+      </div>
+
+      <div class="invoice-bottom">
+        <div class="invoice-notes-block">
+          <h4>Payment Method &amp; Terms</h4>
+          <textarea id="invoice-notes" placeholder="e.g. Payment on collection. Thank you for shopping with kiwassons Auto Hardware until paid in full."></textarea>
+        </div>
+        <div class="invoice-summary">
+          <div class="summary-line"><span>Sub Total</span><span id="inv-subtotal">KES 0</span></div>
+          <div class="summary-line summary-total"><span>GRAND TOTAL</span><span id="inv-total">KES 0</span></div>
+        </div>
+      </div>
+
+      <div class="invoice-delivery-info" id="inv-delivery-info"></div>
+    </article>
+  </main>
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAuth()">&times;</span>
+      <h3>Client Registration</h3>
+      <p class="text-muted">Register your details to place orders and receive notifications when your order is ready. Already registered? Enter the same email and password to continue.</p>
+      <form id="reg-form">
+        <input type="text" id="reg-name" placeholder="Full Name" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password" required>
+        <input type="text" id="reg-phone" placeholder="Phone" required>
+        <input type="text" id="reg-address" placeholder="Address (optional)">
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="invoice-footer-simple">
+    <p>&copy; 2026 kiwassons Auto Hardware. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/invoice.js"></script>
+</body>
+</html>

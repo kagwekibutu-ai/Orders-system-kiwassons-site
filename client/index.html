@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kiwassons - Order Auto Hardware &amp; Tools</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+          <div class="logo">kiwassons <span>Auto Hardware</span></div>
+    <nav class="nav-links">
+      <a href="#order">Place Order</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="contact.html">Feedback</a>
+      <a href="../admin/login.html">CEO Login</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="notify-btn" id="notify-btn" title="Notifications">𔔨 <span id="notify-badge" class="notify-badge">0</span></button>
+      <span id="user-greeting" class="user-greeting"></span>
+      <button onclick="openAuth()" id="auth-btn">Register</button>
+    </div>
+  </header>
+
+  <div class="service-flow">
+    <a href="#" class="service-step active" onclick="openAuth(); return false;">
+      <span class="step-num">1</span><span><strong>Register</strong><small>Create your client profile</small></span>
+    </a>
+    <a href="products.html" class="service-step">
+      <span class="step-num">2</span><span><strong>Order</strong><small>Type your order list &amp; submit</small></span>
+    </a>
+    <a href="invoice.html" class="service-step">
+      <span class="step-num">3</span><span><strong>Invoice &amp; Notifications</strong><small>Verify goods &amp; get notified</small></span>
+    </a>
+    <a href="../admin/login.html" class="service-step">
+      <span class="step-num">4</span><span><strong>CEO Records</strong><small>Invoices, payments &amp; timeline</small></span>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="company-name">kiwassons <span>Auto Hardware</span></div>
+      <p class="company-slogan">where quality products, reliable service and affordable prices come together</p>
+      <a href="products.html" class="btn btn-primary">Place Order</a>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <p class="section-lead">Four simple service steps from registration to CEO records.</p>
+    <div class="steps-grid">
+      <article class="step-card">
+        <span class="step-num">1</span>
+        <h3>Register</h3>
+        <p>Create your client profile so we can send invoices and pickup or delivery notifications.</p>
+        <a href="#" onclick="openAuth(); return false;">Register now &rarr;</a>
+      </article>
+      <article class="step-card">
+        <span class="step-num">2</span>
+        <h3>Order</h3>
+        <p>Type the items and quantities you need as a list, choose delivery or pickup, and submit. We'll confirm via email and WhatsApp.</p>
+        <a href="products.html">Start ordering &rarr;</a>
+      </article>
+      <article class="step-card">
+        <span class="step-num">3</span>
+        <h3>Invoice &amp; Notifications</h3>
+        <p>The CEO verifies your goods, fills in prices, and sends your invoice in-system. You get notified when it is ready.</p>
+        <a href="invoice.html">View invoices &rarr;</a>
+      </article>
+      <article class="step-card">
+        <span class="step-num">4</span>
+        <h3>CEO Records</h3>
+        <p>The CEO records goods ordered, who ordered, invoices submitted, payments made, and the full order timeline.</p>
+        <a href="../admin/login.html">CEO login &rarr;</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="order" class="featured">
+    <h2>Place Your Order</h2>
+    <p class="section-lead" style="text-align:center; max-width:700px; margin:0 auto 2rem;">No need to browse a catalog. Just type the construction materials and tools you need, with quantities, as a simple list. We'll confirm your order by email and WhatsApp.</p>
+    <a href="products.html" class="btn btn-primary btn-full">Go to Order Form</a>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About kiwassons</h2>
+      <p>We are a trusted construction supplies provider based in <a href="https://maps.app.goo.gl/f6xpbP5TN2tVqDuK6" target="_blank" rel="noopener">Murang'a</a>, offering quality construction materials, building tools, and plumbing supplies. Type your order as a list and we'll confirm via email and WhatsApp.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p><a href="https://maps.app.goo.gl/f6xpbP5TN2tVqDuK6" target="_blank" rel="noopener">Murang'a, Kenya</a> &nbsp;|&nbsp; Email: kiwashardwaressons@gmail.com &nbsp;|&nbsp; Phone: +254721397468 / +254722230690</p>
+  </section>
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAuth()">&times;</span>
+      <h3>Client Registration</h3>
+      <p class="text-muted">Register your details to place orders and receive notifications when your order is ready. Already registered? Enter the same email and password to continue.</p>
+      <form id="reg-form">
+        <input type="text" id="reg-name" placeholder="Full Name" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password" required>
+        <input type="text" id="reg-phone" placeholder="Phone" required>
+        <input type="text" id="reg-address" placeholder="Address (optional)">
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 kiwassons Auto Hardware. All rights reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>
